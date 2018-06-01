@@ -1,5 +1,5 @@
 FROM ubuntu 
-FROM openjdk:11-jdk
+FROM openjdk:8-jdk
 MAINTAINER adesso mobile solutions GmbH <it-operations@adesso-mobile.de>
 
 ENV SDK_HOME /usr/local
