@@ -35,7 +35,7 @@ for gradle_version in ${gradle_versions[@]}; do
 
             git_branch_exist "$branch_name" && { 
                 git checkout "$branch_name"
-                git merge master
+                git merge master --no-edit
                 continue
             }
 
@@ -52,3 +52,4 @@ for gradle_version in ${gradle_versions[@]}; do
     done
 done
 
+git checkout master
