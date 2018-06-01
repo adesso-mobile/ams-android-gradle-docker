@@ -47,7 +47,7 @@ for gradle_version in ${gradle_versions[@]}; do
             echo "$android_sdk_tools_version" > buildenv/android_sdk_tools_version
             echo "$android_images" > buildenv/android_images
 
-            git add -A && git commit -m "New Build-Branch for $version_string" . && git push
+            git add -A && git commit -m "New Build-Branch for $version_string" . && git push -u origin "$branch_name"
         done
     done
 done
