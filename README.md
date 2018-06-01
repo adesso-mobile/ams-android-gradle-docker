@@ -19,8 +19,10 @@ The docker images are pushed to official dockerhub.com, so you can simply use it
 ```
 export GRADLE_TASKS="<Your Gradle Tasks...>"
 docker run --rm --tty \
-    -v "<Path to gradle.properties>:/root/.gradle" \        # Additional global gradle.properties files. This is optional
-    -v "$PWD:/opt/workspace" \                              # Your workspace 
-    --workdir=/opt/workspace \                              # Changing the workdir in the container
-    "./gradlew $GRADLE_TASKS"                               # Executing gradlew
+    -v "<Path to gradle.properties>:/root/.gradle" \            # Additional global gradle.properties files. This is optional
+    -v "$PWD:/opt/workspace" \                                  # Your workspace 
+    --workdir=/opt/workspace \                                  # Changing the workdir in the container
+    -it amsitoperations/ams-android-gradle:<Tag, look above>    # Using the right image
+    ./gradlew $GRADLE_TASKS                                     # Executing gradlew
+
 ```
