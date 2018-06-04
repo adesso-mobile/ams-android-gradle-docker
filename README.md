@@ -12,6 +12,34 @@ The docker images are tagged in a specific way:
 
 The information needed for the `target SDK` are extracted from the `Build-Tools-Version`
 
+### Available
+
+#### Gradle
+- 3.0
+- 3.5
+- 4.0
+- 4.1
+- 4.2
+- 4.3
+- 4.4
+- 4.5
+- 4.6
+- 4.7
+- 4.8
+
+#### Build Tools/Target SDK
+- 20.0.0
+- 21.0.2
+- 22.0.1
+- 23.0.3
+- 24.0.3
+- 25.0.3
+- 26.0.3
+- 27.0.3
+
+#### SDK Tools
+- 3859397
+
 ## Usage
 
 The docker images are pushed to official dockerhub.com, so you can simply use it by `docker run`, inside your Android project. (Right now, it seems to do a good job with kotlin too.)
