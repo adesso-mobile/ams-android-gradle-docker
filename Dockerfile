@@ -28,7 +28,7 @@ RUN apt-get --quiet update --yes && \
     unzip android-sdk-linux.zip -d android-sdk-linux  &&\
     rm -rf android-sdk-linux.zip && \
     mkdir $ANDROID_HOME/licenses && \
-    echo yes | $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" && \
-    echo yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" && \
-    echo yes | $ANDROID_HOME/tools/bin/sdkmanager "platforms;${ANDROID_TARGET_SDK}" && \
+    echo yes | $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools"; \
+    echo yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}"; \
+    echo yes | $ANDROID_HOME/tools/bin/sdkmanager "platforms;${ANDROID_TARGET_SDK}"; \
     echo yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
