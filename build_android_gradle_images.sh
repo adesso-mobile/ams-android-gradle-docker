@@ -1,18 +1,12 @@
 #!/bin/bash
 
-#ARG gradle_version=4.4
-#ARG android_target_sdk="android-27"
-#ARG android_build_tools="27.0.3"
-#ARG android_sdk_tools="3859397"
-#ARG android_images="sys-img-armeabi-v7a-android-27,sys-img-armeabi-v7a-android-27"
-
 git_branch_exist() {
     git rev-parse --verify "$1" &>/dev/null
     return $?
 }
 
-gradle_versions=(4.1 4.4) 
-android_build_tools_versions=(26.0.3 27.0.3)
+gradle_versions=(3.0 3.5 4.0 4.1 4.2 4.4 4.5 4.6 4.7 4.8) 
+android_build_tools_versions=(20.0.0 21.0.2 22.0.1 23.0.3 24.0.3 25.0.3 26.0.3 27.0.3)
 android_sdk_tools_versions=(3859397)
 
 for gradle_version in ${gradle_versions[@]}; do
