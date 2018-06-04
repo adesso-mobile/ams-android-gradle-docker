@@ -11,7 +11,6 @@ ARG gradle_version=4.4
 ARG android_target_sdk="android-27"
 ARG android_build_tools="27.0.3"
 ARG android_sdk_tools="3859397"
-ARG android_images="sys-img-armeabi-v7a-android-27,sys-img-armeabi-v7a-android-27"
 
 # Gradle
 ENV GRADLE_VERSION ${gradle_version}
