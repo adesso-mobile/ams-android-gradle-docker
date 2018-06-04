@@ -7,7 +7,7 @@ The ams-android-grade docker image is a docker image with flavours for most of t
 The docker images are tagged in a specific way:
 
 ```
-<Gradle-Version>:<Build-Tools-Version>:<SDK-Tools-Build-Number>
+<Gradle-Version>-<Build-Tools-Version>-<SDK-Tools-Build-Number>
 ```
 
 The information needed for the `target SDK` are extracted from the `Build-Tools-Version`
@@ -46,11 +46,10 @@ The docker images are pushed to official dockerhub.com, so you can simply use it
 
 ```
 export GRADLE_TASKS="<Your Gradle Tasks...>"
-docker run --rm --tty \
-    -v "<Path to gradle.properties>:/root/.gradle" \            # Additional global gradle.properties files. This is optional
+docker run --rm \
+    -v "<Path to gradle.properties>:/root/.gradle/gradle.properties" \            # Additional global gradle.properties files. This is optional
     -v "$PWD:/opt/workspace" \                                  # Your workspace 
     --workdir=/opt/workspace \                                  # Changing the workdir in the container
-    -it amsitoperations/ams-android-gradle:<Tag, look above>    # Using the right image
+    -t amsitoperations/ams-android-gradle:<Tag, look above>    # Using the right image
     ./gradlew $GRADLE_TASKS                                     # Executing gradlew
-
 ```
