@@ -15,6 +15,7 @@ unzip android-sdk-linux.zip -d android-sdk-linux
 rm -rf android-sdk-linux.zip  
 find "$ANDROID_HOME" -maxdepth 2  
 mkdir $ANDROID_HOME/licenses  
+chown 1000:1000 /android-sdk-linux
 
 set +e
 echo yes | $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools"
