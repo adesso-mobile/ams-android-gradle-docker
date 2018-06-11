@@ -6,14 +6,10 @@ ARG android_target_sdk
 ARG android_build_tools
 ARG android_sdk_tools
 
-ENV HOME /opt/home
-RUN mkdir /opt/home && chmod 777 /opt/home && cp /root/.bashrc /opt/home
-
 ENV SDK_HOME /usr/local
 ENV GRADLE_VERSION ${gradle_version}
 ENV GRADLE_SDK_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip
 ENV GRADLE_HOME ${SDK_HOME}/gradle-${GRADLE_VERSION}
-ENV GRADLE_USER_HOME /opt/home/.gradle
 ENV PATH ${GRADLE_HOME}/bin:$PATH
 ENV ANDROID_TARGET_SDK="${android_target_sdk}"
 ENV ANDROID_BUILD_TOOLS="${android_build_tools}"
@@ -24,3 +20,6 @@ ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 
 COPY install.sh /tmp/install.sh
 RUN chmod +x /tmp/install.sh && /tmp/install.sh
+
+COPY build.sh /tmp/build.sh
+RUN chmod +x /tmp/build.sh
