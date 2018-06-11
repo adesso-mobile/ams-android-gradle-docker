@@ -7,7 +7,7 @@ ARG android_build_tools
 ARG android_sdk_tools
 
 ENV HOME /opt/home
-RUN mkdir /opt/home && chmod 777 /opt/home
+RUN mkdir /opt/home && chmod 777 /opt/home && cp /root/* /opt/home
 
 ENV SDK_HOME /usr/local
 ENV GRADLE_VERSION ${gradle_version}
