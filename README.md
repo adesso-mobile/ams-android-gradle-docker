@@ -44,12 +44,13 @@ The information needed for the `target SDK` are extracted from the `Build-Tools-
 
 The docker images are pushed to official dockerhub.com, so you can simply use it by `docker run`, inside your Android project. (Right now, it seems to do a good job with kotlin too.)
 
-```
-export GRADLE_TASKS="<Your Gradle Tasks...>"
-docker run --rm \
-    -v "<Path to gradle.properties>:/root/.gradle/gradle.properties" \            # Additional global gradle.properties files. This is optional
-    -v "$PWD:/opt/workspace" \                                  # Your workspace 
-    --workdir=/opt/workspace \                                  # Changing the workdir in the container
-    -t amsitoperations/ams-android-gradle:<Tag, look above>    # Using the right image
-    ./gradlew $GRADLE_TASKS                                     # Executing gradlew
+```bash
+export GRADLE_TASKS="test assemble..."
+
+docker run -e "GRADLE_TASKS=$GRADLE_TASKS" -e "NEW_UID=$(id -u)" \
+    -v "$HOME/.gradle/:/root/.gradle/" \
+    -v "$PWD:/opt/workspace" \
+    --workdir=/opt/workspace \
+    -t amsitoperations/ams-android-gradle:"$TAG" \
+    /tmp/build.sh
 ```
