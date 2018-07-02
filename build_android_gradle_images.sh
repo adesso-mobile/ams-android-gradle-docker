@@ -14,7 +14,7 @@ for gradle_version in ${gradle_versions[@]}; do
         for android_build_tools_version in ${android_build_tools_versions[@]}; do
             android_major_version=${android_build_tools_version%%.*}
             android_target_sdk="android-$android_major_version"
-            android_images="sys-img-armeabi-v7a-android-${android_major_version},sys-img-armeabi-v7a-android-${android_major_version}"
+            android_images="system-images;android-$android_major_version;google_apis;x86"
 
             version_string="$gradle_version-$android_build_tools_version-$android_sdk_tools_version"
 
@@ -23,6 +23,7 @@ for gradle_version in ${gradle_versions[@]}; do
                 --build-arg "android_target_sdk=$android_target_sdk" \
                 --build-arg "android_build_tools=$android_build_tools_version" \
                 --build-arg "android_sdk_tools=$android_sdk_tools_version" \
+                --build-arg "android_images=$android_images" \
                 . \
             && docker tag "ams-android-gradle:$version_string" "amsitoperations/ams-android-gradle:$version_string" \
             && docker push "amsitoperations/ams-android-gradle:$version_string"
