@@ -14,7 +14,7 @@ if [ -n "$USE_EMULATOR" ]; then
     echo "disk.dataPartition.size=1024m" >> ~/.android/avd/espresso.avd/config.ini
     echo "hw.ramSize=1024" >> ~/.android/avd/espresso.avd/config.ini
 
-    /android-sdk-linux/tools/emulator -avd espresso -no-skin -no-window -no-boot-anim -skip-adb-auth -writable-system & /android-sdk-linux/platform-tools/adb wait-for-device
+    /android-sdk-linux/emulator/emulator -avd espresso -no-skin -no-window -no-boot-anim -skip-adb-auth -writable-system & /android-sdk-linux/platform-tools/adb wait-for-device
 fi
 
 "$(pwd)"/gradlew $GRADLE_TASKS
