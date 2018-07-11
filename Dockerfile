@@ -15,7 +15,6 @@ ENV PATH ${GRADLE_HOME}/bin:$PATH
 ENV ANDROID_TARGET_SDK="${android_target_sdk}"
 ENV ANDROID_BUILD_TOOLS="${android_build_tools}"
 ENV ANDROID_SDK_TOOLS="${android_sdk_tools}"
-ENV ANDROID_IMAGES="${android_images}"
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip
 ENV ANDROID_HOME /android-sdk-linux
 ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH

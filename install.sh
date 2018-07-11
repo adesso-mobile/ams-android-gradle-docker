@@ -21,7 +21,6 @@ yes | $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools"
 yes | $ANDROID_HOME/tools/bin/sdkmanager "emulator"
 yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}"
 yes | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-${ANDROID_TARGET_SDK}"
-yes | $ANDROID_HOME/tools/bin/sdkmanager "${ANDROID_IMAGES}"
 yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
 echo "Installed SDK"

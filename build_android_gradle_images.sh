@@ -23,7 +23,6 @@ for gradle_version in ${gradle_versions[@]}; do
                 --build-arg "android_target_sdk=$android_target_sdk" \
                 --build-arg "android_build_tools=$android_build_tools_version" \
                 --build-arg "android_sdk_tools=$android_sdk_tools_version" \
-                --build-arg "android_images=$android_images" \
                 . \
             && docker tag "ams-android-gradle:$version_string" "amsitoperations/ams-android-gradle:$version_string" \
             && docker push "amsitoperations/ams-android-gradle:$version_string"
