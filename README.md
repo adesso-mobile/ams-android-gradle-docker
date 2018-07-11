@@ -12,45 +12,46 @@ The docker images are tagged in a specific way:
 
 The information needed for the `target SDK` are extracted from the `Build-Tools-Version`
 
-### Available
+### Available on Dockerhub
 
 #### Gradle
-- 3.0
-- 3.5
-- 4.0
-- 4.1
-- 4.2
-- 4.3
 - 4.4
-- 4.5
-- 4.6
-- 4.7
-- 4.8
 
 #### Build Tools/Target SDK
-- 20.0.0
-- 21.0.2
-- 22.0.1
-- 23.0.3
-- 24.0.3
-- 25.0.3
-- 26.0.3
 - 27.0.3
 
 #### SDK Tools
-- 3859397
+- 4333796
 
 ## Usage
+
+### Self-Building
+If there isn't the combination you need on the dockerhub repository, feel free to build your own image:
+
+```bash
+docker build -t "ams-android-gradle:${gradle_v}-${android_build_tools_v}-${android_sdk_tools_v}" \
+            --build-arg "gradle_version=${gradle_v}" \                      # e.g. 4.4
+            --build-arg "android_build_tools=${android_build_tools_v}" \    # e.g. 27.0.3
+            --build-arg "android_sdk_tools=${android_sdk_tool_v}" \         # e.g. 4333796
+            .
+```
+
+### Running 
 
 The docker images are pushed to official dockerhub.com, so you can simply use it by `docker run`, inside your Android project. (Right now, it seems to do a good job with kotlin too.)
 
 ```bash
 export GRADLE_TASKS="test assemble..."
+export USE_EMULATOR=1                   # Only if you need an emulator and system-image for e.g espresso tests
 
-docker run -e "GRADLE_TASKS=$GRADLE_TASKS" -e "NEW_UID=$(id -u)" \
-    -v "$HOME/.gradle/:/root/.gradle/" \
+docker run  \
+    -e "USE_EMULATOR=$USE_EMULATOR"
+    -e "NEW_UID=$(id -u)" \
+    -e "GRADLE_TASKS=$GRADLE_TASKS" \
+    -v "$HOME/.gradle/gradle.properties:/teamcity/.gradle/gradle.properties" \
     -v "$PWD:/opt/workspace" \
     --workdir=/opt/workspace \
+    --privileged \                  # Only needed if you have USE_EMULATOR defined to get access to /dev/kvm
     -t amsitoperations/ams-android-gradle:"$TAG" \
-    /tmp/build.sh
+    start_build
 ```

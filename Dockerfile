@@ -23,5 +23,10 @@ ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 COPY install.sh /tmp/install.sh
 RUN chmod +x /tmp/install.sh && /tmp/install.sh
 
-COPY build.sh /tmp/build.sh
-RUN chmod +x /tmp/build.sh
+RUN chmod 777 /android-sdk-linux -R
+
+COPY build.sh /usr/bin/start_build
+RUN chmod +x /usr/bin/start_build
+
+COPY gradle_invocation.sh /teamcity/gradle_invocation.sh
+RUN chmod +x /teamcity/gradle_invocation.sh
