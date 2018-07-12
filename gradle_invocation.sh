@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-ANDROID_SDK_ROOT=/android-sdk-linux
+export ANDROID_SDK_ROOT=/android-sdk-linux
 
 cd /opt/workspace
 

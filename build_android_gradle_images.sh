@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 git_branch_exist() {
     git rev-parse --verify "$1" &>/dev/null
