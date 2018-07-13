@@ -18,4 +18,5 @@ if [ -n "$USE_EMULATOR" ]; then
     /android-sdk-linux/emulator/emulator -avd espresso -no-skin -no-window -no-boot-anim -skip-adb-auth -writable-system & /android-sdk-linux/platform-tools/adb wait-for-device
 fi
 
-"$(pwd)"/gradlew $GRADLE_TASKS
+test -x "$PWD/gradlew" || chmod +x "$PWD/gradlew"
+"$PWD/gradlew" $GRADLE_TASKS
