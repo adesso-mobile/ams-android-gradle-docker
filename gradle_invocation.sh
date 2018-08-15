@@ -19,4 +19,4 @@ if [ -n "$USE_EMULATOR" ]; then
 fi
 
 test -x "$PWD/gradlew" || chmod +x "$PWD/gradlew"
-"$PWD/gradlew --console=plain" $GRADLE_TASKS
+"$PWD/gradlew" --console=plain $GRADLE_TASKS
