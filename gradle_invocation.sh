@@ -16,10 +16,10 @@ if [ -n "$USE_EMULATOR" ]; then
 	echo "hw.ramSize=1024" >> ~/.android/avd/espresso.avd/config.ini
 
 	/android-sdk-linux/emulator/emulator -avd espresso -no-skin -no-window -no-boot-anim -skip-adb-auth -writable-system & /android-sdk-linux/platform-tools/adb wait-for-device
-	/android-sdk-linux/platform-tools/adb shell settings put global window_animation_scale 0
-	/android-sdk-linux/platform-tools/adb shell settings put global animator_duration_scale 0
-	/android-sdk-linux/platform-tools/adb shell settings put global transition_animation_scale 0
-	/android-sdk-linux/platform-tools/adb shell settings put global animator_duration_scale 0
+
+	/android-sdk-linux/platform-tools/adb shell settings put global window_animation_scale 0 &
+	/android-sdk-linux/platform-tools/adb shell settings put global animator_duration_scale 0 &
+	/android-sdk-linux/platform-tools/adb shell settings put global transition_animation_scale 0 &
 fi
 
 test -x "$PWD/gradlew" || chmod +x "$PWD/gradlew"
