@@ -17,7 +17,10 @@ if [ -n "$USE_EMULATOR" ]; then
 
 	/android-sdk-linux/emulator/emulator -avd espresso -no-skin -no-window -no-boot-anim -skip-adb-auth -writable-system & /android-sdk-linux/platform-tools/adb wait-for-device
 
-	/android-sdk-linux/platform-tools/adb shell settings put global window_animation_scale 0 &
+	while ! (/android-sdk-linux/platform-tools/adb shell settings put global window_animation_scale 0 &> /dev/null); do 
+		echo "Couldn't set settings yet. Emulator probably not yet fully booted. Trying again in 5 seconds..."
+		sleep 5
+	done
 	/android-sdk-linux/platform-tools/adb shell settings put global animator_duration_scale 0 &
 	/android-sdk-linux/platform-tools/adb shell settings put global transition_animation_scale 0 &
 fi
