@@ -6,8 +6,8 @@ git_branch_exist() {
     return $?
 }
 
-gradle_versions=(4.4) 
-android_build_tools_versions=(28.0.3)
+gradle_versions=(4.4 5.6.3) 
+android_build_tools_versions=(28.0.3 29.0.2)
 android_sdk_tools_versions=(4333796)
 
 for gradle_version in ${gradle_versions[@]}; do

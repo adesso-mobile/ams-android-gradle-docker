@@ -15,10 +15,10 @@ The information needed for the `target SDK` are extracted from the `Build-Tools-
 ### Available on Dockerhub
 
 #### Gradle
-- 4.4
+- 4.4 and 5.6.3
 
 #### Build Tools/Target SDK
-- 27.0.3
+- 28.0.3 and 29.0.2
 
 #### SDK Tools
 - 4333796
@@ -30,8 +30,8 @@ If there isn't the combination you need on the dockerhub repository, feel free t
 
 ```bash
 docker build -t "ams-android-gradle:${gradle_v}-${android_build_tools_v}-${android_sdk_tools_v}" \
-            --build-arg "gradle_version=${gradle_v}" \                      # e.g. 4.4
-            --build-arg "android_build_tools=${android_build_tools_v}" \    # e.g. 27.0.3
+            --build-arg "gradle_version=${gradle_v}" \                      # e.g. 5.6.3
+            --build-arg "android_build_tools=${android_build_tools_v}" \    # e.g. 29.0.2
             --build-arg "android_sdk_tools=${android_sdk_tool_v}" \         # e.g. 4333796
             .
 ```
