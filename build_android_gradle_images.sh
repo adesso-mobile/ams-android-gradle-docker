@@ -6,9 +6,10 @@ git_branch_exist() {
     return $?
 }
 
-gradle_versions=(4.4 5.6.3 6.5)  
-android_build_tools_versions=(28.0.3 29.0.2)
-android_sdk_tools_versions=(4333796)
+jdk_version=11
+gradle_versions=(7.1)  
+android_build_tools_versions=(28.0.3)
+android_sdk_tools_versions=(7583922_latest)
 
 for gradle_version in ${gradle_versions[@]}; do
     for android_sdk_tools_version in ${android_sdk_tools_versions[@]}; do
@@ -17,7 +18,7 @@ for gradle_version in ${gradle_versions[@]}; do
             android_target_sdk="android-$android_major_version"
             android_images="system-images;android-$android_major_version;google_apis;x86"
 
-            version_string="$gradle_version-$android_build_tools_version-$android_sdk_tools_version"
+			version_string="$gradle_version-$android_build_tools_version-$android_sdk_tools_version-jdk${jdk_version}"
 
             docker build -t "ams-android-gradle:$version_string" \
                 --build-arg "gradle_version=$gradle_version" \
