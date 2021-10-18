@@ -6,10 +6,10 @@ cd /opt/workspace
 
 if [ -n "$USE_EMULATOR" ]; then
 	if [ -z "$ANDROID_SYSTEM_IMG" ]; then
-		export ANDROID_SYSTEM_IMG="system-images;android-27;google_apis;x86"
+		export ANDROID_SYSTEM_IMG="system-images;android-28;google_apis;x86"
 	fi
-	yes | /android-sdk-linux/tools/bin/sdkmanager "$ANDROID_SYSTEM_IMG"
-	yes | /android-sdk-linux/tools/bin/avdmanager create avd --force --name espresso -d 33 -k "$ANDROID_SYSTEM_IMG"
+	yes | /android-sdk-linux/cmdline-tools/latest/bin/sdkmanager "$ANDROID_SYSTEM_IMG"
+	yes | /android-sdk-linux/cmdline-tools/latest/bin/avdmanager create avd --force --name espresso -d 33 -k "$ANDROID_SYSTEM_IMG"
 
 	test -f ~/.android/avd/espresso.avd/config.ini || { echo "No Espresso AVD Config file" && exit 1; }
 	echo "disk.dataPartition.size=1024m" >> ~/.android/avd/espresso.avd/config.ini
