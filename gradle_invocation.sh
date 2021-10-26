@@ -21,6 +21,10 @@ if [ -n "$USE_EMULATOR" ]; then
 		/android-sdk-linux/emulator/emulator -avd espresso -no-skin -no-window -no-boot-anim -gpu swiftshader_indirect -skip-adb-auth -writable-system & /android-sdk-linux/platform-tools/adb wait-for-device
 	fi
 
+	while read -r emu_setting; do
+		echo "$emu_setting" >> ~/.android/avd/espresso.avd/config.ini
+	done<<<"$ADDITIONAL_ANDROID_EMULATOR_SETTINGS"
+
 	while ! (/android-sdk-linux/platform-tools/adb shell settings put global window_animation_scale 0 &> /dev/null); do 
 		echo "Couldn't set settings yet. Emulator probably not yet fully booted. Trying again in 5 seconds..."
 		sleep 5
