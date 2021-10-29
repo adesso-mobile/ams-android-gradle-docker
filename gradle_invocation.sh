@@ -15,15 +15,15 @@ if [ -n "$USE_EMULATOR" ]; then
 	echo "disk.dataPartition.size=1024m" >> ~/.android/avd/espresso.avd/config.ini
 	echo "hw.ramSize=1024" >> ~/.android/avd/espresso.avd/config.ini
 
+	while read -r emu_setting; do
+		echo "$emu_setting" >> ~/.android/avd/espresso.avd/config.ini
+	done<<<"$ADDITIONAL_ANDROID_EMULATOR_SETTINGS"
+
 	if [ -z "$USE_SOFTWARE_RENDERING" ]; then
 		/android-sdk-linux/emulator/emulator -avd espresso -no-skin -no-window -no-boot-anim -skip-adb-auth -writable-system & /android-sdk-linux/platform-tools/adb wait-for-device
 	else
 		/android-sdk-linux/emulator/emulator -avd espresso -no-skin -no-window -no-boot-anim -gpu swiftshader_indirect -skip-adb-auth -writable-system & /android-sdk-linux/platform-tools/adb wait-for-device
 	fi
-
-	while read -r emu_setting; do
-		echo "$emu_setting" >> ~/.android/avd/espresso.avd/config.ini
-	done<<<"$ADDITIONAL_ANDROID_EMULATOR_SETTINGS"
 
 	while ! (/android-sdk-linux/platform-tools/adb shell settings put global window_animation_scale 0 &> /dev/null); do 
 		echo "Couldn't set settings yet. Emulator probably not yet fully booted. Trying again in 5 seconds..."
