@@ -7,7 +7,7 @@ git_branch_exist() {
 }
 
 jdk_version=11
-gradle_versions=(7.1)  
+gradle_versions=(7.1 6.5)
 android_build_tools_versions=(28.0.3)
 android_sdk_tools_versions=(7583922_latest)
 
