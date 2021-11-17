@@ -28,4 +28,7 @@ yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "build-tools;${ANDROID_B
 yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;${ANDROID_TARGET_SDK}"
 yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
+mkdir -p "$ANDROID_HOME"/platform-tools/api/
+cp "$ANDROID_HOME"/platforms/android-*/data/api-versions.xml "$ANDROID_HOME"/platform-tools/api/
+
 echo "Installed SDK"
